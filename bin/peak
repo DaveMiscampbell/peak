@@ -10,7 +10,8 @@ var Parse = function Parse () {
 
     , generate = subParser.addParser('new', { addHelp: true })
     , watch = subParser.addParser('watch', { addHelp: true })
-    , deploy = subParser.addParser('deploy', { addHelp: true });
+    , deploy = subParser.addParser('deploy', { addHelp: true })
+    , writeHtml = subParser.addParser('writeHtml', { addHelp: true });
 
   generate.addArgument(['path'], { help: 'path to new project' });
   generate.addArgument(['-i', '--index'],  { help: 'path to index file' });
@@ -24,6 +25,9 @@ var Parse = function Parse () {
   deploy.addArgument(['-b', '--blog'], { help: 'tumblr blog to use as context and to deploy to' });
   deploy.addArgument(['-e', '--email'], { help: 'tumblr blog e-mail address' });
   deploy.addArgument(['-p', '--password'], { help: 'tumblr blog password' });
+
+  writeHtml.addArgument(['--outputPath'], { help: 'path to output HTML'});
+  writeHtml.addArgument(['-c', '--config'], { help: 'config file path'});
 
   this.args = parser.parseArgs();
 }
